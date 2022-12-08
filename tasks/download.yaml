@@ -1,0 +1,11 @@
+- name: download docker-compose
+  tags: download
+  get_url:
+    validate_certs: no
+    url: https://github.com/docker/compose/releases/download/{{ version }}/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}
+    dest: "{{ role_path }}/files/docker-compose-{{ ansible_system }}-{{ ansible_architecture }}"
+    mode: 0644
+    force: no
+    checksum: sha256:{{ x86_64_sha256 }}
+  delegate_to: localhost
+  when: ansible_architecture == "x86_64"

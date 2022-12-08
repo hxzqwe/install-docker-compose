@@ -1,0 +1,2 @@
+- name: copy docker-compose file
+  copy: src=docker-compose-{{ ansible_system }}-{{ ansible_architecture }} dest=/usr/local/bin/docker-compose mode=755
